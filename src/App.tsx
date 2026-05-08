@@ -46,8 +46,8 @@ export default function App() {
       setUser(userData);
       setRepos(repoData);
       setContributions(contribData);
-    } catch (e: unknown) {
-        setError(e instanceof Error ? e.message : 'Bir hata oluştu');
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Bir hata oluştu');
     } finally {
       setLoading(false);
     }
