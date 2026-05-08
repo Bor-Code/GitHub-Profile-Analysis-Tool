@@ -1,6 +1,10 @@
 # GitHub Profile Analyzer
 A dashboard for analyzing GitHub profiles. Built with React, TypeScript, and Vite.
 
+![Repos](public/screenshots/repos.png)
+
+![Dashboard](public/screenshots/dashboard.png)
+
 ## Features
 - Profile overview with bio, location, and account age
 - Language distribution chart
@@ -50,6 +54,10 @@ VITE_GITHUB_TOKEN=ghp_xxxxxxxxxxxxx
 
 # GitHub Profil Analiz Aracı
 GitHub profillerini analiz etmek için bir kontrol paneli. React, TypeScript ve Vite ile geliştirilmiştir.
+
+![Repos](public/screenshots/repos.png)
+
+![Dashboard](public/screenshots/dashboard.png)
 
 ## Özellikler
 - Kişisel bilgi, konum ve hesap yaşını içeren profil özeti
