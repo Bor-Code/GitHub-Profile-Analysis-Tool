@@ -1,73 +1,97 @@
-# React + TypeScript + Vite
+# GitHub Profile Analyzer
+A dashboard for analyzing GitHub profiles. Built with React, TypeScript, and Vite.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Features
+- Profile overview with bio, location, and account age
+- Language distribution chart
+- Most starred repositories chart
+- Contribution activity heatmap
+- Repository list sortable by stars, recent activity, or forks
 
-Currently, two official plugins are available:
+## Tech Stack
+- React 18
+- TypeScript
+- Vite
+- Chart.js + react-chartjs-2
+- GitHub REST API (no authentication required)
+- GitHub Actions for automated deployment
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Getting Started
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Deployment
+The project deploys automatically to GitHub Pages on every push to `main`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+To set up deployment on your own fork:
+1. Go to Settings -> Pages
+2. Set source to “GitHub Actions”
+3. Push to main
+The live URL will be at `https://<username>.github.io/GitHub-Profile-Analysis-Tool/`
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## API Rate Limits
+GitHub's REST API allows 60 unauthenticated requests per hour. If you need more, create a personal access token at github.com/settings/tokens and add it to `src/api/github.ts`:
+
+```ts
+headers: {
+  Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`,
+                }
+```
+
+Add your token to a `.env` file (never commit this file):
+
+```
+VITE_GITHUB_TOKEN=ghp_xxxxxxxxxxxxx
+```
+
+----------------------------------------------------------------------------------
+
+# GitHub Profil Analiz Aracı
+GitHub profillerini analiz etmek için bir kontrol paneli. React, TypeScript ve Vite ile geliştirilmiştir.
+
+## Özellikler
+- Kişisel bilgi, konum ve hesap yaşını içeren profil özeti
+- Dil dağılım grafiği
+- En çok yıldız alan depo grafiği
+- Katkı etkinliği ısı haritası
+- Yıldızlara, son aktiviteye veya çatallara göre sıralanabilir depo listesi
+
+## Teknoloji Yığını
+- React 18
+- TypeScript
+- Vite
+- Chart.js + react-chartjs-2
+- GitHub REST API (kimlik doğrulama gerekmez)
+- Otomatik dağıtım için GitHub Actions
+
+## Başlangıç
+```bash
+npm install
+npm run dev
+```
+
+## Dağıtım
+Proje, `main`'e her itme işleminde GitHub Pages'a otomatik olarak dağıtılır.
+
+Kendi fork'unuzda dağıtımı kurmak için:
+1. Ayarlar -> Sayfalar'a gidin
+2. Kaynağı “GitHub Actions” olarak ayarlayın
+3. Main'e itin
+Canlı URL, `https://<kullanıcıadı>.github.io/GitHub-Profile-Analysis-Tool/` adresinde olacaktır
+
+## API İstek Sınırları
+GitHub'ın REST API'si saatte 60 adet kimlik doğrulaması yapılmamış istek izin verir. Daha fazlasına ihtiyacınız varsa, github.com/settings/tokens adresinden bir kişisel erişim jetonu oluşturun ve bunu `src/api/github.ts` dosyasına ekleyin:
+
+```ts
+headers: {
+  Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`,
+                }
+```
+
+Token'ınızı bir `.env` dosyasına ekleyin (bu dosyayı asla commit etmeyin):
+
+```
+VITE_GITHUB_TOKEN=ghp_xxxxxxxxxxxxx
 ```
